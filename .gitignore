@@ -1,1 +1,4 @@
-/estructura proyecto.txt
+/estructura proyecto.txt# Ignorar archivos grandes eliminados
+data/train/sitycleta_train.csv
+data/processed/sitycleta_preprocessed.csv
+notebooks/sitycleta.pkl
