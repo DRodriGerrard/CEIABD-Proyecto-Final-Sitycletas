@@ -30,7 +30,8 @@ El objetivo principal es aportar una herramienta que ayude a mejorar la gestión
 │   ├── raw/                   # Dataset original de SAGULPA
 │   ├── external/              # Datasets externos (clima, eventos, festivos...)
 │   ├── processed/             # Dataset final ya limpio y enriquecido
-│
+│   |-- predicted              # Dataframe con los resultados de las predicciones
+|
 ├── notebooks/
 │   ├── 01_data_exploration.ipynb     # Análisis exploratorio inicial
 │   ├── 02_data_cleaning.ipynb        # Limpieza y transformación de datos
