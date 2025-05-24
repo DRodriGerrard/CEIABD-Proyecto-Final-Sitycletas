@@ -4,6 +4,7 @@ import numpy as np
 import datetime
 import os
 import pandas as pd
+import requests
 
 # Cargar modelo
 modelo = joblib.load(os.path.join(os.path.dirname(__file__), '..', 'models', 'modelo_lightgbm.pkl'))
@@ -37,12 +38,35 @@ def home():
         week_of_year = int(fecha.strftime('%U'))
         is_holiday = 0
 
-        # Valores promedio
-        temp_c = 0.41
-        precip_mm = 0.005
-        wind_speed_kmh = 0.42
+        # Coordenadas de Las Palmas
+        lat, lon = 28.1, -15.4
+        fecha_str_api = fecha.strftime('%Y-%m-%d')
+        hora_objetivo = fecha.strftime('%Y-%m-%dT%H:00')
+
+        # Llamada a Open-Meteo
+        url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&hourly=temperature_2m,precipitation,wind_speed_10m&start_date={fecha_str_api}&end_date={fecha_str_api}&timezone=auto"
+
+        try:
+            res = requests.get(url)
+            datos = res.json()
+
+            horas = datos['hourly']['time']
+            idx = horas.index(hora_objetivo)
+
+            temp_c = datos['hourly']['temperature_2m'][idx] / 35
+            precip_mm = datos['hourly']['precipitation'][idx] / 3.3
+            wind_speed_kmh = datos['hourly']['wind_speed_10m'][idx] / 65
+
+        except Exception:
+            # Si la API falla o no hay datos, usar valores promedio
+            temp_c = 0.41
+            precip_mm = 0.005
+            wind_speed_kmh = 0.42
+
+        # 🔁 Variables históricas simuladas (no provienen de la API)
         free_bikes_lag1 = 5.0
         free_bikes_roll3 = 5.2
+
 
         # Input al modelo
         feature_names = [
