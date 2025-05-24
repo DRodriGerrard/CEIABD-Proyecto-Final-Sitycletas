@@ -1,0 +1,94 @@
+/* Estilo general */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  max-width: 600px;
+  margin: auto;
+  padding: 2em;
+  line-height: 1.6;
+}
+
+h2 {
+  color: #1a73e8;
+  text-align: center;
+}
+
+form {
+  background-color: #fff;
+  padding: 2em;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+input[type="datetime-local"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.75em;
+  font-size: 1em;
+  background-color: white;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+select,
+button {
+  display: block;
+  width: 100%;
+  margin-bottom: 1.5em;
+  padding: 0.75em;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #0f5fc1;
+}
+
+p {
+  margin-top: 1em;
+}
+
+/* Mensajes */
+p[style*="color:red"] {
+  font-weight: bold;
+}
+
+/* Responsive: móviles verticales */
+@media (max-width: 600px) {
+  body {
+    padding: 1em;
+    font-size: 1em;
+  }
+
+  form {
+    padding: 1.2em;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  input, select, button {
+    font-size: 1em;
+    padding: 0.9em;
+  }
+
+  button {
+    font-size: 1.1em;
+  }
+}

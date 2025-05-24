@@ -7,3 +7,5 @@ scikit-learn
 xgboost
 lightgbm
 prophet
+flask
+joblib

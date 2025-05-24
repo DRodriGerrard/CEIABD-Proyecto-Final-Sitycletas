@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Predecir bicicletas libres</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h2>Predecir bicicletas libres</h2>
+
+  {% if error %}
+    <p style="color: red;"><strong>{{ error }}</strong></p>
+  {% endif %}
+
+  <form method="POST">
+    <label for="fecha">Selecciona fecha y hora:</label>
+    <input type="datetime-local" name="fecha" id="fecha"
+           required min="2025-05-01T00:00"><br><br>
+
+    <label for="estacion">Selecciona estación:</label>
+    <select name="estacion" id="estacion" required>
+      {% for est in estaciones %}
+        <option value="{{ est }}">{{ est }}</option>
+      {% endfor %}
+    </select><br><br>
+
+    <button type="submit">Predecir</button>
+  </form>
+
+  {% if prediccion is not none %}
+    <h3>Predicción: {{ prediccion }} bicicletas libres</h3>
+    <p><em>Fecha: {{ fecha_mostrada }}</em></p>
+    <p><em>Estación: {{ estacion }}</em></p>
+  {% endif %}
+
+  <script src="../static/script.js"></script>
+</body>
+</html>
