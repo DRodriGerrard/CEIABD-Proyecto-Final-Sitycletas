@@ -13,16 +13,29 @@
   {% endif %}
 
   <form method="POST">
-    <label for="fecha">Selecciona fecha y hora:</label>
-    <input type="datetime-local" name="fecha" id="fecha"
-           required min="2025-05-01T00:00"><br><br>
+    <label for="fecha">Fecha y hora:</label>
+    <input type="datetime-local" name="fecha" id="fecha" required min="2025-05-01T00:00">
 
-    <label for="estacion">Selecciona estación:</label>
+    <label for="estacion">Estación:</label>
     <select name="estacion" id="estacion" required>
       {% for est in estaciones %}
         <option value="{{ est }}">{{ est }}</option>
       {% endfor %}
-    </select><br><br>
+    </select>
+
+    <label for="is_holiday">Tipo de día:</label>
+    <select name="is_holiday" id="is_holiday" required>
+      <option value="0">Laboral</option>
+      <option value="1">Festivo</option>
+    </select>
+
+    <label for="clima">Clima:</label>
+    <select name="clima" id="clima" required>
+      <option value="soleado">Soleado</option>
+      <option value="nublado">Nublado</option>
+      <option value="lluvioso">Lluvioso</option>
+      <option value="viento fuerte">Viento fuerte</option>
+    </select>
 
     <button type="submit">Predecir</button>
   </form>
